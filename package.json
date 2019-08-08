@@ -18,7 +18,10 @@
   },
   "author": "Jonas",
   "license": "ISC",
-  "devDependencies": {
+  "dependencies": {
+    "express-fileupload": "^1.1.5",
+    "socketio-file-upload": "^0.7.0",
+    "utf8": "^3.0.0",
     "autoprefixer": "^7.1.4",
     "concat": "^1.0.3",
     "node-sass": "^4.5.3",
@@ -37,10 +40,5 @@
     "file-system": "^2.2.2",
     "hbs": "^4.0.3",
     "jsonwebtoken": "^8.5.1"
-  },
-  "dependencies": {
-    "express-fileupload": "^1.1.5",
-    "socketio-file-upload": "^0.7.0",
-    "utf8": "^3.0.0"
   }
 }
