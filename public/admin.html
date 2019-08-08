@@ -28,6 +28,10 @@
                     <textarea class="info__info" name="message" placeholder="Information" required>{{info}}</textarea>
                     <div action="" class="info__list">
                         <span class="info_list-text"></span>List elements:</span>
+                        <div class="info__item-block">
+                            <input type="text" class="info__item" placeholder="List Element" required value="{{.}}">
+                            <div class="info__item-plus"><i class="fas fa-plus"></i></div>
+                        </div>
                         {{#list}}
                         <div class="info__item-block">
                             <input type="text" class="info__item" placeholder="List Element" required value="{{.}}">
@@ -37,6 +41,11 @@
                     </div>
                     <div action="" class="info__contacts">
                             <span class="info__contacts-text">Contacts list:</span>
+                            <div class="info__contacts-block">
+                                <input type="text" class="info__contact-icon" placeholder="Social Icon" required value="{{icon}}">
+                                <input type="text" class="info__contact-link" placeholder="Social Link" required value="{{link}}">
+                                <div class="info__item-plus"><i class="fas fa-plus"></i></div>
+                            </div>
                             {{#contact}}
                             <div class="info__contacts-block">
                                 <input type="text" class="info__contact-icon" placeholder="Social Icon" required value="{{icon}}">
