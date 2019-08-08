@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        
+        <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,400i|Nunito:300,300i" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/b95aaee2f3.js"></script>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
+        
+        <title>nexter &mdash; your home, your freedom</title>
+    </head>
+    <body class="container">
+        <div class="forms">
+        </div>
+        <script id="adminInfoTemplate" type="text/html">
+            <form action="" class="info" id="info">
+                <h2>Site information</h2>
+                    <input class="info__name" type="text" placeholder="Name" required value="{{name}}">
+                    <input class="info__position" type="text" placeholder="Position" required value="{{position}}">
+                    <input class="info__photo" id="info__photo"  type="file" name="pic" placeholder="Photo" accept="image/*" required>
+                    <!-- <input class="info__photo"  type="file" name="pic" placeholder="Photo" accept="image/*" required /> -->
+                    <!-- <input type="button" value="{{photo.name}}" onclick="document.querySelector('.info__photo').click();" required/> -->
+                    <textarea class="info__info" name="message" placeholder="Information" required>{{info}}</textarea>
+                    <div action="" class="info__list">
+                        <span class="info_list-text"></span>List elements:</span>
+                        {{#list}}
+                        <div class="info__item-block">
+                            <input type="text" class="info__item" placeholder="List Element" required value="{{.}}">
+                            <div class="info__item-plus"><i class="fas fa-plus"></i></div>
+                        </div>
+                        {{/list}}
+                    </div>
+                    <div action="" class="info__contacts">
+                            <span class="info__contacts-text">Contacts list:</span>
+                            {{#contact}}
+                            <div class="info__contacts-block">
+                                <input type="text" class="info__contact-icon" placeholder="Social Icon" required value="{{icon}}">
+                                <input type="text" class="info__contact-link" placeholder="Social Link" required value="{{link}}">
+                                <div class="info__item-plus"><i class="fas fa-plus"></i></div>
+                            </div>
+                            {{/contact}}
+                    </div>
+                    <button form="info">Save</button>
+                </form>
+        </script>
+
+        <script id="adminProjectTemplate" type="text/html">
+            <form action="" class="project" id="project">
+                <h2>Add new projct</h2>
+                    <input class="project__heading" type="text" placeholder="Project name" required value="">
+                    <textarea class="project__info" name="message" placeholder="Information" required></textarea>
+                    <div class="project__video-list">
+                        <span class="project__list-text"></span>List elements:</span>
+                        <div class="project__video-block">
+                                <input class="project__video" id="video__video"  type="file" name="video" placeholder="Video" accept="image/*" required>
+                                <div class="project__plus"><i class="fas fa-plus"></i></div>
+                            </div>
+                    </div>
+                    <button form="project">Save</button>
+                </form>
+        </script>
+        <script id="adminProjectUpdateTemplate" type="text/html">
+            <form action="" class="project" id="{{id}}">
+                <h2>Update {{title}} project</h2>
+                    <input class="project__heading" type="text" placeholder="Project name" required value="{{title}}">
+                    <textarea class="project__info" name="message" placeholder="Information" required>{{info}}</textarea>
+                    <div class="project__video-list">
+                        <span class="project__list-text"></span>List elements:</span>
+                        <div class="project__media-block project__media-block-{{id}}">
+                            <input class="project__video" id="video__video"  type="file" name="video" placeholder="Video" accept="image/*" required>
+                            <div class="project__plus"><i class="fas fa-plus"></i></div>
+                        </div>
+                        {{#list}}
+                        <div class="project__media-block project__media-block-{{id}}">
+                            <input class="project__video" id="video__video"  type="file" name="video" placeholder="Video" accept="image/*" required>
+                            <div class="project__plus"><i class="fas fa-plus"></i></div>
+                        </div>
+                        {{/list}}
+                    </div>
+                    <button form="{{id}}">Save</button>
+                </form>
+        </script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.11.2/alertify.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./js/admin.js"></script>
+    </body>
+</html>
