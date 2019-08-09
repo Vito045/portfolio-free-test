@@ -1,10 +1,14 @@
 .forms {
     grid-column: center-start / center-end;
     display: grid;
-    grid-template-columns: min-content min-content;
+    grid-template-columns: 1fr 1fr;
     grid-gap: 4rem;
     justify-content: space-around;
-    color: #fff;
+    // color: #fff;
+
+    @media only screen and (max-width: $bp-medium) {
+        grid-template-columns: 1fr;
+    }
 }
 .info {
     display: grid;
@@ -24,7 +28,7 @@
     }
 
     &__info {
-        width: 40rem;
+        // width: 40rem;
         height: 10rem;
     }
 
@@ -63,9 +67,19 @@
     grid-gap: 1rem;
     align-content: start;
     font-size: 1.5rem;
+    position: relative;
+
+    &__cross {
+        position: absolute;
+        color: #000;
+        font-size: 3rem;
+        top: 0;
+        transform: translateX(-150%);
+        cursor: pointer;
+    }
 
     &__info {
-        width: 40rem;
+        // width: 40rem;
         height: 10rem;
     }
 
@@ -79,6 +93,37 @@
     &__plus {
         cursor: pointer;
     }
+}
+
+.admin {
+    background-color: #fff;
+    color: #000;
+}
+
+input {
+    height: 3rem;
+    padding-left: 1rem;
+    font-size: 1.5rem;
+
+    &[type="file"] {
+        height: auto;
+        padding: 0;
+        display: flex;
+    }
+}
+
+button {
+    border: 1px solid;
+    height: 4rem;
+    background: rgb(16, 116, 163);
+    color: white;
+    font-size: 1.8rem;
+}
+
+textarea {
+    padding-left: 1rem;
+    padding-top: .5rem;
+    font-size: 1.5rem;
 }
 
 .none {

@@ -10,11 +10,21 @@
         <script src="https://kit.fontawesome.com/b95aaee2f3.js"></script>
         <link rel="stylesheet" href="css/style.css">
         <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+        <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.4/build/alertify.min.js"></script>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.4/build/css/alertify.min.css"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js" integrity="sha256-uckMYBvIGtce2L5Vf/mwld5arpR5JuhAEeJyjPZSUKY=" crossorigin="anonymous"></script>
         
         <title>nexter &mdash; your home, your freedom</title>
     </head>
-    <body class="container">
+    <body class="container admin">
+        <form class="authorisation" style="display: none;">
+            <label for="login">Login:</label>
+            <input type="text" id="login">
+            <label for="pass">Password:</label>
+            <input type="password" id="pass">
+            <button type="submit">Login In</button>
+        </form>
         <div class="forms">
         </div>
         <script id="adminInfoTemplate" type="text/html">
@@ -22,10 +32,10 @@
                 <h2>Site information</h2>
                     <input class="info__name" type="text" placeholder="Name" required value="{{name}}">
                     <input class="info__position" type="text" placeholder="Position" required value="{{position}}">
-                    <input class="info__photo" id="info__photo"  type="file" name="pic" placeholder="Photo" accept="image/*" required>
+                    <input class="info__photo" id="info__photo"  type="file" name="pic" placeholder="Photo" accept="image/*, video/*" required>
                     <!-- <input class="info__photo"  type="file" name="pic" placeholder="Photo" accept="image/*" required /> -->
                     <!-- <input type="button" value="{{photo.name}}" onclick="document.querySelector('.info__photo').click();" required/> -->
-                    <textarea class="info__info" name="message" placeholder="Information" required>{{info}}</textarea>
+                    <textarea cols="85" class="info__info" name="message" placeholder="Information" required>{{info}}</textarea>
                     <div action="" class="info__list">
                         <span class="info_list-text"></span>List elements:</span>
                         {{#list}}
@@ -53,11 +63,11 @@
             <form action="" class="project" id="project">
                 <h2>Add new projct</h2>
                     <input class="project__heading" type="text" placeholder="Project name" required value="">
-                    <textarea class="project__info" name="message" placeholder="Information" required></textarea>
+                    <textarea cols="85" class="project__info" name="message" placeholder="Information" required></textarea>
                     <div class="project__video-list">
-                        <span class="project__list-text"></span>List elements:</span>
+                        <span class="project__list-text"></span>Gallery:</span>
                         <div class="project__video-block">
-                                <input class="project__video" id="video__video"  type="file" name="video" placeholder="Video" accept="image/*" required>
+                                <input class="project__video" id="video__video"  type="file" name="video" placeholder="Video" accept="image/*, video/*" required>
                                 <div class="project__plus"><i class="fas fa-plus"></i></div>
                             </div>
                     </div>
@@ -65,28 +75,30 @@
                 </form>
         </script>
         <script id="adminProjectUpdateTemplate" type="text/html">
-            <form action="" class="project" id="{{id}}">
+            <form action="" class="project cross" id="{{id}}">
+                <figcaption class="project__cross"><i class="fas fa-times"></i></figcaption>
                 <h2>Update {{title}} project</h2>
                     <input class="project__heading" type="text" placeholder="Project name" required value="{{title}}">
-                    <textarea class="project__info" name="message" placeholder="Information" required>{{info}}</textarea>
+                    <textarea cols="85" class="project__info" name="message" placeholder="Information" required>{{info}}</textarea>
                     <div class="project__video-list">
-                        <span class="project__list-text"></span>List elements:</span>
+                        <span class="project__list-text"></span>Gallery:</span>
                         <div class="project__media-block project__media-block-{{id}}">
                             <input class="project__video" id="video__video"  type="file" name="video" placeholder="Video" accept="image/*" required>
                             <div class="project__plus"><i class="fas fa-plus"></i></div>
                         </div>
-                        {{#list}}
+                        <!-- {{#list}}
                         <div class="project__media-block project__media-block-{{id}}">
-                            <input class="project__video" id="video__video"  type="file" name="video" placeholder="Video" accept="image/*" required>
+                            <input class="project__video" id="video__video"  type="file" name="video" placeholder="Video" accept="image/*, video/*" required>
                             <div class="project__plus"><i class="fas fa-plus"></i></div>
                         </div>
-                        {{/list}}
+                        {{/list}} -->
                     </div>
                     <button form="{{id}}">Save</button>
                 </form>
         </script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.11.2/alertify.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js" integrity="sha256-uckMYBvIGtce2L5Vf/mwld5arpR5JuhAEeJyjPZSUKY=" crossorigin="anonymous"></script>
+        <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.4/build/alertify.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>

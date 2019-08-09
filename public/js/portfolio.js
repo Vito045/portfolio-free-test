@@ -488,7 +488,18 @@ socket.on('start', (site) => {
     });
 
     socket.on('projects', (projects) => {
-        console.log(projects);
+        const navigationTemplate = document.querySelector('#navigationTemplate').innerHTML;
+        const htmlNavigation = Mustache.render(navigationTemplate, projects);
+        document.querySelector('.container').insertAdjacentHTML('afterbegin', htmlNavigation);
+
+        // console.log(document.querySelector('.navigation__list').children);
+        // // document.querySelector('.navigation__list').children.forEach((child) => {
+        // //     projects.forEach((project) => {
+        // //         if(child.id === project._id.toString()) console.log('log');
+        // //     });  
+        // // });
+
+        // console.log(projects);
         const portfolioTemplate = document.querySelector('#portfolioTemplate').innerHTML;
         projects.forEach((project) => {
             let media = [];
@@ -496,10 +507,10 @@ socket.on('start', (site) => {
                 
                 const bytes = new Uint8Array(med.data.data);
                 const encoded = encode(bytes);
-                console.log(med, encoded);
+                // console.log(med, encoded);
                 if(med.type === 'video') media.push(`<video src="data:video/mp4;base64, ${encoded}" width="100%" height="100%" style="object-fit: cover;" autoplay controls></video>`);
                 else if(med.type === 'image') media.push(`<img src="data:image/png;base64, ${encoded}" style="width: 100%; height: 100%; objct-fit: cover;">`);
-                console.log(media);
+                // console.log(media);
             });
             // new Swiper (`${project._id.toString()}`, {});
             const html = Mustache.render(portfolioTemplate, {title: project.title, info: project.info, media, id: project._id  });
@@ -510,6 +521,47 @@ socket.on('start', (site) => {
                 nextEl: '.portfolio__portfolio-button--right',
                 prevEl: '.portfolio__portfolio-button--left',
               }
+        });
+
+        document.querySelectorAll('.portfolio__portfolio-buttons').forEach((button) => {
+            const bar = button.firstElementChild.nextElementSibling.offsetWidth;
+            console.log('df')
+            const children = button.parentElement.firstElementChild.firstElementChild.firstElementChild.childElementCount;
+            console.log(children.firstElementChild);
+            const elemLength = bar / children;
+
+
+            // console.log(button.firstElementChild.nextElementSibling, children);
+            button.firstElementChild.nextElementSibling.firstElementChild.style.width = `${elemLength}px`;
+
+            button.firstElementChild.addEventListener('click', (e) => {
+                const slider = button.parentElement.firstElementChild.firstElementChild.firstElementChild.children;
+                for(let key in slider) {
+                    if(slider[key].classList.contains('swiper-slide-active')) {
+                        button.firstElementChild.nextElementSibling.firstElementChild.style.marginLeft = `${key * elemLength}px`;
+                    }
+                }
+            });
+
+            button.lastElementChild.addEventListener('click', (e) => {
+                const slider = button.parentElement.firstElementChild.firstElementChild.firstElementChild.children;
+                for(let key in slider) {
+                    if(slider[key].classList.contains('swiper-slide-active')) {
+                        button.firstElementChild.nextElementSibling.firstElementChild.style.marginLeft = `${key * elemLength}px`;
+                    }
+                }
+            });
+        });   
+        
+        document.querySelector('.navigation__icon').addEventListener('click', (e) => {
+            e.target.classList.toggle('opened');
+            if(e.target.classList.contains('opened')) {
+                document.querySelector('.navigation__list').style.transform = 'translateX(0)';
+                document.body.style.overflow = 'hidden';
+            }else {
+                document.querySelector('.navigation__list').style.transform = 'translateX(100%)';
+                document.body.style.overflow = 'visible';   
+            }
         });
 
         document.querySelectorAll('.portfolio__portfolio-plus').forEach((plus) => {
@@ -527,51 +579,73 @@ socket.on('start', (site) => {
     
 });
 
-        const bar = document.querySelector('.portfolio__portfolio-progress-bar').offsetWidth;
-        document.querySelectorAll('.portfolio__portfolio-buttons').forEach((button) => {
-            const children = button.parentElement.firstElementChild.firstElementChild.firstElementChild.childElementCount;
-            const elemLength = bar / children;
+const nav = document.querySelector('.navigation__list').children;
+        for(key in nav) {
+            if(key === 'lenght') console.log(key)
+            document.querySelectorAll('.portfolio__portfolio-item').forEach((item) => {
+                // console.log(item, key, nav[key])
+                nav[key].addEventListener('click', (e) => {
+                    // console.log(e.target.parentElement.id, item);
+                    if(e.target.parentElement.id === item.id) {
+                        item.scrollIntoView({block: "start", behavior: "smooth"});
+                        item.firstElementChild.firstElementChild.click();
 
-
-            // console.log(button.firstElementChild.nextElementSibling, children);
-            button.firstElementChild.nextElementSibling.firstElementChild.style.width = `${elemLength}px`;
-
-            button.firstElementChild.addEventListener('click', (e) => {
-                const slider = button.parentElement.firstElementChild.firstElementChild.firstElementChild.children;
-                for(let key in slider) {
-                    if(slider[key].classList.contains('swiper-slide-active')) {
-                        button.firstElementChild.nextElementSibling.firstElementChild.style.marginLeft = `${key * elemLength}px`;
+                        document.querySelector('.navigation__list').style.transform = 'translateX(100%)';
+                        document.body.style.overflow = 'visible';
                     }
-                }
-                // button.parentElement.firstElementChild.firstElementChild.firstElementChild.children.forEach((child) => {
-                //     console.log(child);
-                // });
+                });
             });
+        }
 
-            button.lastElementChild.addEventListener('click', (e) => {
-                const slider = button.parentElement.firstElementChild.firstElementChild.firstElementChild.children;
-                for(let key in slider) {
-                    if(slider[key].classList.contains('swiper-slide-active')) {
-                        button.firstElementChild.nextElementSibling.firstElementChild.style.marginLeft = `${key * elemLength}px`;
-                    }
-                }
-                // button.parentElement.firstElementChild.firstElementChild.firstElementChild.children.forEach((child) => {
-                //     console.log(child);
-                // });
-            });
+        // // const bar = document.querySelector('.portfolio__portfolio-progress-bar').offsetWidth;
+        // console.log(document.querySelectorAll('.portfolio__portfolio-buttons'));
+        // document.querySelectorAll('.portfolio__portfolio-buttons').forEach((button) => {
+        //     const bar = button.firstElementChild.nextElementSibling.offsetWidth;
+        //     console.log('df')
+        //     const children = button.parentElement.firstElementChild.firstElementChild.firstElementChild.childElementCount;
+        //     console.log(children.firstElementChild);
+        //     const elemLength = bar / children;
+
+
+        //     // console.log(button.firstElementChild.nextElementSibling, children);
+        //     button.firstElementChild.nextElementSibling.firstElementChild.style.width = `${elemLength}px`;
+
+        //     button.firstElementChild.addEventListener('click', (e) => {
+        //         const slider = button.parentElement.firstElementChild.firstElementChild.firstElementChild.children;
+        //         for(let key in slider) {
+        //             if(slider[key].classList.contains('swiper-slide-active')) {
+        //                 button.firstElementChild.nextElementSibling.firstElementChild.style.marginLeft = `${key * elemLength}px`;
+        //             }
+        //         }
+        //         // button.parentElement.firstElementChild.firstElementChild.firstElementChild.children.forEach((child) => {
+        //         //     console.log(child);
+        //         // });
+        //     });
+
+        //     button.lastElementChild.addEventListener('click', (e) => {
+        //         const slider = button.parentElement.firstElementChild.firstElementChild.firstElementChild.children;
+        //         for(let key in slider) {
+        //             if(slider[key].classList.contains('swiper-slide-active')) {
+        //                 button.firstElementChild.nextElementSibling.firstElementChild.style.marginLeft = `${key * elemLength}px`;
+        //             }
+        //         }
+        //         // button.parentElement.firstElementChild.firstElementChild.firstElementChild.children.forEach((child) => {
+        //         //     console.log(child);
+        //         // });
+        //     });
         
-            // document.querySelectorAll('.portfolio__portfolio-button').forEach(button => {
-            //     button.addEventListener('click', () => {
-            //         setTimeout(() => {
-            //             document.querySelectorAll('.portfolio__portfolio-image.swiper-slide').forEach((slide, i) => {
-            //                 if(slide.classList.contains('swiper-slide-active')) {
-            //                     document.querySelector('.portfolio__portfolio-progress-bar-elem').style.marginLeft = `${i * elemLength}px`;
-            //                 }
-            //             });
-            //         }, 1);
-            //     });
-            // });
-        });        
+        //     // document.querySelectorAll('.portfolio__portfolio-button').forEach(button => {
+        //     //     button.addEventListener('click', () => {
+        //     //         setTimeout(() => {
+        //     //             document.querySelectorAll('.portfolio__portfolio-image.swiper-slide').forEach((slide, i) => {
+        //     //                 if(slide.classList.contains('swiper-slide-active')) {
+        //     //                     document.querySelector('.portfolio__portfolio-progress-bar-elem').style.marginLeft = `${i * elemLength}px`;
+        //     //                 }
+        //     //             });
+        //     //         }, 1);
+        //     //     });
+        //     // });
+        // });        
     });
 });
 

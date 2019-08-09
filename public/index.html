@@ -15,17 +15,6 @@
         <title>nexter &mdash; your home, your freedom</title>
     </head>
     <body class="container">
-        <nav class="navigation">
-            <div class="navigation__icon">
-                <div class="navigation__line navigation__line--1"></div>
-                <div class="navigation__line navigation__line--2"></div>
-                <div class="navigation__line navigation__line--3"></div>
-            </div>
-            <ul class="navigation__list">
-                <li class="navigation__element"><a href="#zzzProduct">hre>zzz Product</a></li>
-                <li class="navigation__element"><a href="#zzzProduct1">hre>zzz Produc1</a></li>
-            </ul>
-        </nav>
         <div class="portfolio">
                 <div class="portfolio__portfolio">
                     <!-- <div class="portfolio__portfolio-item" id="zzzProduct">
@@ -50,7 +39,7 @@ The work was conducted by a product team and developers from Israel/Ukraine/U.S
                                             <div class="swiper-container">
                                                     <div class="portfolio__portfolio-images swiper-wrapper">
                                                             <div class="portfolio__portfolio-image swiper-slide"><img src="./img/zzoo/zzoo slide 01.png"></div>
-                                                            <!-- <div class="portfolio__portfolio-image swiper-slide"><img src="./img/zzoo/zzoo slide 02.png"></div> -->
+                                                             <div class="portfolio__portfolio-image swiper-slide"><img src="./img/zzoo/zzoo slide 02.png"></div> -->
                                                           <!--  <div class="portfolio__portfolio-image swiper-slide"><img src="./img/zzoo/zzoo slide 03.png"></div>
                                                             <div class="portfolio__portfolio-image swiper-slide"><img src="./img/zzoo/zzoo slide 04.png"></div>
                                                             <div class="portfolio__portfolio-image swiper-slide"><img src="./img/zzoo/zzoo slide 05.png"></div>
@@ -85,6 +74,22 @@ The work was conducted by a product team and developers from Israel/Ukraine/U.S
                 </div> -->
             </div>
         </div>
+        <script id="navigationTemplate" type="text/html">
+            <nav class="navigation">
+                    <div class="navigation__icon">
+                        <div class="navigation__line navigation__line--1"></div>
+                        <div class="navigation__line navigation__line--2"></div>
+                        <div class="navigation__line navigation__line--3"></div>
+                    </div>
+                    <ul class="navigation__list">
+                        {{#.}}
+                        <!-- <li class="navigation__element"><a href="#zzzProduct">hre>zzz Product</a></li>
+                        <li class="navigation__element"><a href="#zzzProduct1">hre>zzz Produc1</a></li> -->
+                            <li class="navigation__element" id={{_id}}><a href="#{{title}}">{{title}}</a></li>
+                        {{/.}}
+                    </ul>
+                </nav>
+        </script>
         <script id="infoTemplate" type="text/html">
                 <div class="portfolio__info">
                         <div class="portfolio__menu">
@@ -117,7 +122,7 @@ The work was conducted by a product team and developers from Israel/Ukraine/U.S
                         </div>
         </script>
         <script id="portfolioTemplate" type="text/html">
-            <div class="portfolio__portfolio-item">
+            <div class="portfolio__portfolio-item" id={{id}}>
                     <div class="portfolio__portfolio-head">
                         <div class="portfolio__portfolio-plus">
                             <div class="portfolio__portfolio-line portfolio__portfolio-line--1"></div>
@@ -139,9 +144,9 @@ The work was conducted by a product team and developers from Israel/Ukraine/U.S
                                         
                                 </div>
                                 <div class="portfolio__portfolio-buttons">
-                                        <div class="portfolio__portfolio-button portfolio__portfolio-button--left wiper-button-prev">L</div>
+                                        <div class="portfolio__portfolio-button portfolio__portfolio-button--left wiper-button-prev"><i class="fas fa-chevron-left"></i></div>
                                         <div class="portfolio__portfolio-progress-bar"><div class="portfolio__portfolio-progress-bar-elem"></div></div>
-                                        <div class="portfolio__portfolio-button portfolio__portfolio-button--right wiper-button-next">R</div>
+                                        <div class="portfolio__portfolio-button portfolio__portfolio-button--right wiper-button-next"><i class="fas fa-chevron-right"></i></div>
                                 </div>
                         </div>
                     </div>
