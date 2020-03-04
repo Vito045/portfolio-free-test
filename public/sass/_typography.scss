@@ -52,9 +52,9 @@
     }
 }
 
-.gray-text {
-    color: $font-color-primary;
-}
+// .gray-text {
+//     color: $font-color-primary;
+// }
 
 a,
 a:hover,
@@ -73,6 +73,18 @@ a:visited {
     &.floated{
         &::before{
             content: '';
+
+            @media only screen and (max-width: $bp-medium) {
+                content: '\A';
+                white-space: pre-wrap;
+            }
+        }
+
+        &::after {
+            @media only screen and (max-width: $bp-medium) {
+                content: '\A';
+                white-space: pre-wrap;
+            }
         }
     }
 }

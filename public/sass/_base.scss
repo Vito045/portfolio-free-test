@@ -30,6 +30,11 @@ $bp-small: 37.5em;
     box-sizing: inherit;
 }
 
+* {
+    font-family: 'San Francisco', sans-serif;
+    font-weight: 300;
+}
+
 html {
     box-sizing: border-box;
     font-size: 62.5%;
@@ -44,6 +49,11 @@ body {
     color: $color-grey-dark-2;
     font-weight: 300;
     background-color: #374148;
+    height: 100vh;
+}
+
+html,body {
+    overflow-x: hidden;
 }
 
 .container {

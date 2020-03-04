@@ -32,16 +32,16 @@
                 <h2>Site information</h2>
                     <input class="info__name" type="text" placeholder="Name" required value="{{name}}">
                     <input class="info__position" type="text" placeholder="Position" required value="{{position}}">
-                    <input class="info__photo" id="info__photo"  type="file" name="pic" placeholder="Photo" accept="image/*, video/*" required>
+                    <input class="info__photo" id="info__photo"  type="file" name="pic" placeholder="Photo" accept="image/*, video/*" >
                     <!-- <input class="info__photo"  type="file" name="pic" placeholder="Photo" accept="image/*" required /> -->
                     <!-- <input type="button" value="{{photo.name}}" onclick="document.querySelector('.info__photo').click();" required/> -->
                     <textarea cols="85" class="info__info" name="message" placeholder="Information" required>{{info}}</textarea>
                     <div action="" class="info__list">
                         <span class="info_list-text"></span>List elements:</span>
-                        <div class="info__item-block">
+                        <!-- <div class="info__item-block">
                             <input type="text" class="info__item" placeholder="List Element" required value="{{.}}">
                             <div class="info__item-plus"><i class="fas fa-plus"></i></div>
-                        </div>
+                        </div> -->
                         {{#list}}
                         <div class="info__item-block">
                             <input type="text" class="info__item" placeholder="List Element" required value="{{.}}">
@@ -51,14 +51,14 @@
                     </div>
                     <div action="" class="info__contacts">
                             <span class="info__contacts-text">Contacts list:</span>
-                            <div class="info__contacts-block">
+                            <!-- <div class="info__contacts-block">
                                 <input type="text" class="info__contact-icon" placeholder="Social Icon" required value="{{icon}}">
                                 <input type="text" class="info__contact-link" placeholder="Social Link" required value="{{link}}">
                                 <div class="info__item-plus"><i class="fas fa-plus"></i></div>
-                            </div>
+                            </div> -->
                             {{#contact}}
                             <div class="info__contacts-block">
-                                <input type="text" class="info__contact-icon" placeholder="Social Icon" required value="{{icon}}">
+                                <input type="text" class="info__contact-icon" placeholder="Social Icon" required value="{{icon}}" >
                                 <input type="text" class="info__contact-link" placeholder="Social Link" required value="{{link}}">
                                 <div class="info__item-plus"><i class="fas fa-plus"></i></div>
                             </div>
@@ -75,12 +75,12 @@
                     <textarea cols="85" class="project__info" name="message" placeholder="Information" required></textarea>
                     <div class="project__video-list">
                         <span class="project__list-text"></span>Gallery:</span>
-                        <div class="project__video-block">
+                        <div class="project__video-block" id="clasuka">
                                 <input class="project__video" id="video__video"  type="file" name="video" placeholder="Video" accept="image/*, video/*" required>
                                 <div class="project__plus"><i class="fas fa-plus"></i></div>
                             </div>
                     </div>
-                    <button form="project">Save</button>
+                    <button form="project" id="submitbtn">Save</button>
                 </form>
         </script>
         <script id="adminProjectUpdateTemplate" type="text/html">
@@ -92,7 +92,7 @@
                     <div class="project__video-list">
                         <span class="project__list-text"></span>Gallery:</span>
                         <div class="project__media-block project__media-block-{{id}}">
-                            <input class="project__video" id="video__video"  type="file" name="video" placeholder="Video" accept="image/*" required>
+                            <input class="project__video" id="video__video"  type="file" name="video" placeholder="Video" accept="image/*, video/*">
                             <div class="project__plus"><i class="fas fa-plus"></i></div>
                         </div>
                         <!-- {{#list}}
@@ -111,6 +111,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
+        <script src="/siofu/client.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="./js/admin.js"></script>
     </body>

@@ -13,8 +13,9 @@ const projectSchema = new mongoose.Schema({
         default: 'Info'
     },
     media: [{
-        data: {
-            type: Buffer,
+        name: {
+            type: String,
+            defautl: ' '
             // type: String,
             // default: ' '
         },

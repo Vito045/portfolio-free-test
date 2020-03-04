@@ -12,9 +12,9 @@
         <link rel="shortcut icon" type="image/png" href="img/favicon.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
         
-        <title>nexter &mdash; your home, your freedom</title>
+        <title>Yaron Pariente Portfolio</title>
     </head>
-    <body class="container">
+    <body class="container" style="height: 100%">
         <div class="portfolio">
                 <div class="portfolio__portfolio">
                     <!-- <div class="portfolio__portfolio-item" id="zzzProduct">
@@ -74,6 +74,12 @@ The work was conducted by a product team and developers from Israel/Ukraine/U.S
                 </div> -->
             </div>
         </div>
+        <div class="bottom-text">
+                * Additional works/projects and ux processes will be presented at the meeting.
+        </div>
+        <footer class="footer">
+            <span class="footer__text">yaronsan2@gmail.com</span>
+        </footer>
         <script id="navigationTemplate" type="text/html">
             <nav class="navigation">
                     <div class="navigation__icon">
@@ -96,7 +102,7 @@ The work was conducted by a product team and developers from Israel/Ukraine/U.S
                             <div class="portfolio__image"><img src="data:image/png;base64, {{photo}}"></div>
                             <ul class="portfolio__menu-list">
                                 <li class="portfolio__menu-item">works</li>
-                                <li class="portfolio__menu-item">cv</li>
+                                <li class="portfolio__menu-item"><a download="Yaron Pariente CV.pdf" href="media/Yaron Pariente CV.pdf" >cv</a></li>
                             </ul>
                         </div>
                         <div class="portfolio__typography">
@@ -115,7 +121,7 @@ The work was conducted by a product team and developers from Israel/Ukraine/U.S
                                     <h3 class="portfolio__contact-heading">Contact</h3>
                                     <ul class="portfolio__contact-list">
                                         {{#contact}}
-                                        <li class="portfolio__contact-item"><a href="{{link}}">{{{icon}}}</a></li>
+                                        <li class="portfolio__contact-item"><a href="{{link}}" target="_blank">{{{icon}}}</a></li>
                                         {{/contact}}
                                     </ul>
                                 </div>
@@ -134,7 +140,7 @@ The work was conducted by a product team and developers from Israel/Ukraine/U.S
                     <pre class="portfolio__portfolio-text">{{{info}}}</pre>
                     <div class="portfolio__portfolio-slider">
                                 <div class="portfolio__portfolio-wrapper">
-                                        <div class="swiper-container">
+                                        <div class="swiper-container swiper-container-{{id}}">
                                                 <div class="portfolio__portfolio-images swiper-wrapper">
                                                     {{#media}}
                                                         <div class="portfolio__portfolio-image swiper-slide">{{{.}}}</div>
@@ -144,10 +150,11 @@ The work was conducted by a product team and developers from Israel/Ukraine/U.S
                                         
                                 </div>
                                 <div class="portfolio__portfolio-buttons">
-                                        <div class="portfolio__portfolio-button portfolio__portfolio-button--left wiper-button-prev"><i class="fas fa-chevron-left"></i></div>
+                                        <div class="portfolio__portfolio-button portfolio__portfolio-button--left portfolio__portfolio-button--left-{{id}} wiper-button-prev"><i class="fas fa-chevron-left"></i></div>
                                         <div class="portfolio__portfolio-progress-bar"><div class="portfolio__portfolio-progress-bar-elem"></div></div>
-                                        <div class="portfolio__portfolio-button portfolio__portfolio-button--right wiper-button-next"><i class="fas fa-chevron-right"></i></div>
+                                        <div class="portfolio__portfolio-button portfolio__portfolio-button--right portfolio__portfolio-button--right-{{id}} wiper-button-next"><i class="fas fa-chevron-right"></i></div>
                                 </div>
+                                <div class="portfolio__portfolio-bottom"></div>
                         </div>
                     </div>
                 </div>
