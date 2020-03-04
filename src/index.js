@@ -12,7 +12,7 @@ const fs = require('file-system');
 const rimraf = require('rimraf');
 
 // const port = 80 || process.env.PORT;
-const port = 3000 || process.env.PORT;
+const port = process.env.PORT || 4000;
 
 const app = express();
 const server = http.createServer(app);
@@ -143,4 +143,4 @@ io.on('connection', async socket => {
   });
 });
 
-server.listen(3000, () => console.log('Server is up on port', port));
+server.listen(port, () => console.log('Server is up on port', port));
